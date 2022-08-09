@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const morgan = require("morgan");
 const app = express();
 
 const api = require("./router/api");
@@ -20,6 +21,7 @@ mongoose
     console.log(err.message);
   });
 //must add a paser
+app.use(morgan("combined"));
 app.use(express.json());
 app.use("/v1", api);
 app.use(cors());
