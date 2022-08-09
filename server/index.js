@@ -19,6 +19,7 @@ mongoose
   .catch((err) => {
     console.log(err.message);
   });
-
+//must add a paser
+app.use(express.json());
 app.use("/v1", api);
 app.use(cors());
