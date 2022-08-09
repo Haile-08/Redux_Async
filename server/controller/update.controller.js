@@ -5,7 +5,7 @@ async function httpUpdateItem(req, res) {
 
   try {
     const update = await item.findOneAndUpdate(
-      { id: `${id}` },
+      { _id: `${id}` },
       {
         ...req.body,
       }

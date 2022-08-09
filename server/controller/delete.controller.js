@@ -3,7 +3,7 @@ const item = require("../model/Schema.model");
 async function httpDeleteItem(req, res) {
   let { id } = req.params;
   try {
-    const items = await item.findOneAndDelete({ id: `${id}` });
+    const items = await item.findOneAndDelete({ _id: `${id}` });
 
     if (!items) {
       return res.status(400).json({ err: "no such item" });
