@@ -29,6 +29,17 @@ export const deleteItem = createAsyncThunk("delete/deleteItem", async (id) => {
     console.log(err);
   }
 });
+
+export const updateItem = createAsyncThunk(
+  "update/updateItem",
+  async (data, id) => {
+    try {
+      await axios.put(`/update/${id}`, data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
 const itemSclice = createSlice({
   name: "item",
   initialState: {
@@ -59,9 +70,32 @@ const itemSclice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    [deleteItem.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [deleteItem.fulfilled]: (state, action) => {
+      state.loading = false;
+      const {
+        arg: { id },
+      } = action.meta;
+      if (id) {
+        state.item = state.item.filter((item) => item._id !== id);
+      }
+    },
+    [deleteItem.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    [updateItem.pending]: (state, action) => {
+      state.loading = true;
+    },
   },
 });
 
 const { reducer } = itemSclice;
 
 export default reducer;
+
+
+//more info on 
+//https://dev.to/julfikarhaidar/redux-toolkit-crud-example-with-react-hooks-4d98
