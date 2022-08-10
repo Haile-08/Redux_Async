@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import TextField from "@mui/material/TextField";
 import EditIcon from "@mui/icons-material/Edit";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const Editpage = () => {
   const [title, setTitle] = useState("");
@@ -33,7 +35,14 @@ const Editpage = () => {
           borderRadius: "10px",
         }}
       >
-        <BackButton />
+        <Link to="/">
+          <Button
+            startIcon={<ArrowBackIcon />}
+            sx={{
+              color: "#2f3542",
+            }}
+          />
+        </Link>
 
         <Typography variant="h4" sx={{ color: "#dfe4ea", paddingLeft: "50px" }}>
           Edit
@@ -67,13 +76,13 @@ const Editpage = () => {
         />
 
         <Button
+          variant="contained"
           startIcon={<EditIcon />}
           sx={{
-            color: "#2f3542",
+            margin: "30px",
+            background: "#3742fa",
           }}
-          onClick={() => {
-            dispatch(updateItem({ id: id, title: title, text: text }));
-          }}
+          onClick={() => {}}
         />
       </Box>
     </Grid>

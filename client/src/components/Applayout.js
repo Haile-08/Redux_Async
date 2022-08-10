@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Grid, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
+import { Link } from "react-router-dom";
 
 import Items from "./Item";
 
@@ -21,7 +22,9 @@ const Applayout = () => {
         Redux Todo App
       </Typography>
       <Items />
-      <Button startIcon={<AddIcon />} />
+      <Link to="/add">
+        <Button startIcon={<AddIcon />} />
+      </Link>
     </Grid>
   );
 };

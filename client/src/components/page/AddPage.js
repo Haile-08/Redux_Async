@@ -5,6 +5,7 @@ import TextField from "@mui/material/TextField";
 import { Box } from "@mui/system";
 import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const Addpage = () => {
   const [id, setId] = useState(3);
@@ -37,10 +38,15 @@ const Addpage = () => {
         }}
       >
         <Link to="/">
-          <BackButton />
+          <Button
+            startIcon={<ArrowBackIcon />}
+            sx={{
+              color: "#2f3542",
+            }}
+          />
         </Link>
         <Typography variant="h4" sx={{ color: "#dfe4ea", paddingLeft: "50px" }}>
-          ADD
+          Add
         </Typography>
         <TextField
           id="outlined-basic"
@@ -75,16 +81,14 @@ const Addpage = () => {
           endIcon={<AddIcon />}
           sx={{
             margin: "30px",
+            background: "#3742fa",
           }}
           onClick={() => {
             setId(id + 1);
-            dispatch(addItem({ id, title, text }));
           }}
         >
           ADD
         </Button>
-
-        {console.log(id, title, text)}
       </Box>
     </Grid>
   );

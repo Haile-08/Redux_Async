@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import {
   Card,
   CardActions,
@@ -43,12 +43,14 @@ const Items = () => {
               color: "#2f3542",
             }}
           />
-          <Button
-            startIcon={<EditIcon />}
-            sx={{
-              color: "#2f3542",
-            }}
-          />
+          <Link to="/Edit">
+            <Button
+              startIcon={<EditIcon />}
+              sx={{
+                color: "#2f3542",
+              }}
+            />
+          </Link>
         </CardActions>
       </Card>
     </>
