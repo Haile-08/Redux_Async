@@ -23,7 +23,6 @@ const Items = () => {
           width: "400px",
           margin: "10px",
         }}
-        maxwidth
       >
         <CardHeader />
         <CardContent>
