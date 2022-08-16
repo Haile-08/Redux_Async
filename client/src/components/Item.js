@@ -10,8 +10,12 @@ import {
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import { useDispatch } from "react-redux";
 
-const Items = () => {
+import { deleteItem } from "../redux/features/itemSlice";
+
+const Items = ({ id }) => {
+  const dispatch = useDispatch();
   return (
     <>
       <Card
@@ -40,6 +44,9 @@ const Items = () => {
             startIcon={<DeleteIcon />}
             sx={{
               color: "#2f3542",
+            }}
+            onClick={() => {
+              dispatch(deleteItem(id));
             }}
           />
           <Link to="/Edit">

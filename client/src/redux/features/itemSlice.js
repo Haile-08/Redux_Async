@@ -12,6 +12,7 @@ export const getItem = createAsyncThunk("get/getItem", async () => {
 
 export const postItem = createAsyncThunk("post/postItem", async (data) => {
   try {
+    console.log(data);
     return await axios.post("/post", data).catch((err) => {
       console.log(err);
     });
@@ -22,6 +23,7 @@ export const postItem = createAsyncThunk("post/postItem", async (data) => {
 
 export const deleteItem = createAsyncThunk("delete/deleteItem", async (id) => {
   try {
+    console.log(id);
     await axios.delete(`/delete/${id}`).then((res) => {
       return res.data;
     });

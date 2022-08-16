@@ -37,7 +37,7 @@ const Applayout = () => {
           </Typography>
 
           {item.map((item) => {
-            return <Items key={item._id} />;
+            return <Items key={item._id} id={item._id} />;
           })}
 
           <Link to="/add">

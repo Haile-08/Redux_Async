@@ -6,11 +6,14 @@ import { Box } from "@mui/system";
 import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { useDispatch } from "react-redux";
+
+import { postItem } from "../../redux/features/itemSlice";
 
 const Addpage = () => {
-  const [id, setId] = useState(3);
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
+  const dispatch = useDispatch();
   return (
     <Grid
       container
@@ -75,20 +78,21 @@ const Addpage = () => {
             setText(e.target.value);
           }}
         />
-
-        <Button
-          variant="contained"
-          endIcon={<AddIcon />}
-          sx={{
-            margin: "30px",
-            background: "#3742fa",
-          }}
-          onClick={() => {
-            setId(id + 1);
-          }}
-        >
-          ADD
-        </Button>
+        <Link to="/">
+          <Button
+            variant="contained"
+            endIcon={<AddIcon />}
+            sx={{
+              margin: "30px",
+              background: "#3742fa",
+            }}
+            onClick={() => {
+              dispatch(postItem({ title: title, text: text }));
+            }}
+          >
+            ADD
+          </Button>
+        </Link>
       </Box>
     </Grid>
   );
