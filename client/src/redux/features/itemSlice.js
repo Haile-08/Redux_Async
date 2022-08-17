@@ -97,7 +97,19 @@ const itemSclice = createSlice({
     },
     [updateItem.fulfilled]: (state, action) => {
       state.loading = false;
+      const {
+        arg: { id },
+      } = action.meta;
+      if (id) {
+        state.item = state.item.map((i) => 
+          i._id === id? action.payload : i
+        );
+      }
     },
+    [updateItem.rejected]:(state,action)=>{
+      state.loading = false;
+      state.error = action.payload;
+    }
   },
 });
 
@@ -107,4 +119,3 @@ export default reducer;
 
 
 //more info on 
-//https://dev.to/julfikarhaidar/redux-toolkit-crud-example-with-react-hooks-4d98

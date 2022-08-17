@@ -14,7 +14,6 @@ const Editpage = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const id = location.state;
-  console.log(id);
   return (
     <Grid
       container
