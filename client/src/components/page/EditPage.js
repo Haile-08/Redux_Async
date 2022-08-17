@@ -79,21 +79,22 @@ const Editpage = () => {
             setText(e.target.value);
           }}
         />
-
-        <Button
-          variant="contained"
-          startIcon={<EditIcon />}
-          sx={{
-            margin: "30px",
-            background: "#3742fa",
-          }}
-          onClick={(e) => {
-            e.preventDefault();
-            dispatch(updateItem({ title, text, id }));
-            setText("");
-            setTitle("");
-          }}
-        />
+        <Link to="/">
+          <Button
+            variant="contained"
+            startIcon={<EditIcon />}
+            sx={{
+              margin: "30px",
+              background: "#3742fa",
+            }}
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch(updateItem({ title, text, id }));
+              setText("");
+              setTitle("");
+            }}
+          />
+        </Link>
       </Box>
     </Grid>
   );

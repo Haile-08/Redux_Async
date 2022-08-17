@@ -36,11 +36,9 @@ const Applayout = () => {
             Redux Todo App
           </Typography>
 
-          {item.map((i) => {
-            return (
-              <Items key={i._id} id={i._id} title={i.title} text={i.text} />
-            );
-          })}
+          {item.map((i) => (
+            <Items key={i._id} id={i._id} title={i.title} text={i.text} />
+          ))}
 
           <Link to="/add">
             <Button startIcon={<AddIcon />} />
