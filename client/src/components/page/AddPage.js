@@ -86,8 +86,11 @@ const Addpage = () => {
               margin: "30px",
               background: "#3742fa",
             }}
-            onClick={() => {
-              dispatch(postItem({ title: title, text: text }));
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch(postItem({ title, text }));
+              setText("");
+              setTitle("");
             }}
           >
             ADD

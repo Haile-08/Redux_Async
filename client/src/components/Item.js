@@ -14,7 +14,7 @@ import { useDispatch } from "react-redux";
 
 import { deleteItem } from "../redux/features/itemSlice";
 
-const Items = ({ id }) => {
+const Items = ({ id, title, text }) => {
   const dispatch = useDispatch();
   return (
     <>
@@ -31,7 +31,7 @@ const Items = ({ id }) => {
         <CardHeader />
         <CardContent>
           <Typography sx={{ color: "#dfe4ea", marginLeft: "50px" }}>
-            text area
+            {text}
           </Typography>
         </CardContent>
         <CardActions
@@ -49,7 +49,7 @@ const Items = ({ id }) => {
               dispatch(deleteItem(id));
             }}
           />
-          <Link to="/Edit">
+          <Link to="/Edit" state={id}>
             <Button
               startIcon={<EditIcon />}
               sx={{

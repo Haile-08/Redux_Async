@@ -10,16 +10,20 @@ export const getItem = createAsyncThunk("get/getItem", async () => {
   }
 });
 
-export const postItem = createAsyncThunk("post/postItem", async (data) => {
-  try {
-    console.log(data);
-    return await axios.post("/post", data).catch((err) => {
+export const postItem = createAsyncThunk(
+  "post/postItem",
+  async ({ title, text }) => {
+    try {
+      console.log(title);
+      console.log(text);
+      return await axios.post("/post", { title, text }).catch((err) => {
+        console.log(err);
+      });
+    } catch (err) {
       console.log(err);
-    });
-  } catch (err) {
-    console.log(err);
+    }
   }
-});
+);
 
 export const deleteItem = createAsyncThunk("delete/deleteItem", async (id) => {
   try {
@@ -34,9 +38,9 @@ export const deleteItem = createAsyncThunk("delete/deleteItem", async (id) => {
 
 export const updateItem = createAsyncThunk(
   "update/updateItem",
-  async (data, id) => {
+  async ({ title, text, id }) => {
     try {
-      await axios.put(`/update/${id}`, data);
+      await axios.put(`/update/${id}`, { title, text });
     } catch (err) {
       console.log(err);
     }
@@ -90,6 +94,9 @@ const itemSclice = createSlice({
     },
     [updateItem.pending]: (state, action) => {
       state.loading = true;
+    },
+    [updateItem.fulfilled]: (state, action) => {
+      state.loading = false;
     },
   },
 });

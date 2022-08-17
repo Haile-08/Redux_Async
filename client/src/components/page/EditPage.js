@@ -5,10 +5,16 @@ import { Box } from "@mui/system";
 import TextField from "@mui/material/TextField";
 import EditIcon from "@mui/icons-material/Edit";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-
+import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { updateItem } from "../../redux/features/itemSlice";
 const Editpage = () => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const id = location.state;
+  console.log(id);
   return (
     <Grid
       container
@@ -82,7 +88,12 @@ const Editpage = () => {
             margin: "30px",
             background: "#3742fa",
           }}
-          onClick={() => {}}
+          onClick={(e) => {
+            e.preventDefault();
+            dispatch(updateItem({ title, text, id }));
+            setText("");
+            setTitle("");
+          }}
         />
       </Box>
     </Grid>
