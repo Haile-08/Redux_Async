@@ -3,6 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import Applayout from "./components/Applayout";
 import Addpage from "./components/page/AddPage";
 import Editpage from "./components/page/EditPage";
+import Login from "./components/page/Login";
+import Signup from "./components/page/Signup";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
             <Route path="/" element={<Applayout />} />
             <Route path="/Add" element={<Addpage />} />
             <Route path="/Edit" element={<Editpage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
           </Routes>
         </Grid>
       </header>
